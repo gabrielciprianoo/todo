@@ -9,20 +9,15 @@ const BUCKET_KEY: Record<ProgressBucket, keyof typeof quotes> = {
   complete: "complete",
 };
 
-function getQuotesForBucket(bucket: ProgressBucket): string[] {
-  return quotes[BUCKET_KEY[bucket]];
-}
-
-function pickRandomQuote(list: string[]): string {
-  if (!list.length) return FALLBACK_QUOTE;
-  return list[Math.floor(Math.random() * list.length)];
-}
-
 /**
  * Simulates an async API call: reads the local quotes list, picks a random
  * quote from the bucket, resolves a Promise. Swappable for a real fetch()
  * later without changing call sites. Always resolves, never rejects.
  */
 export function fetchQuoteOfTheDay(bucket: ProgressBucket): Promise<string> {
-  return Promise.resolve(pickRandomQuote(getQuotesForBucket(bucket)));
+  const list = quotes[BUCKET_KEY[bucket]];
+  const quote = list.length
+    ? list[Math.floor(Math.random() * list.length)]
+    : FALLBACK_QUOTE;
+  return Promise.resolve(quote);
 }
