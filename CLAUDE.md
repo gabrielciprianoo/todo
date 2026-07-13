@@ -46,7 +46,7 @@ Rules:
 
 ## Design language
 
-Black & white only, no color accent. System font stack (`-apple-system` first) — do not introduce a second type family. Motion is intentional and minimal: one signature interaction (currently the checkbox "pop"), everything else is quiet transitions. Respect `prefers-reduced-motion`. When making UI/visual decisions, use the `frontend-design` skill.
+Black & white only, no color accent. System font stack (`-apple-system` first) — do not introduce a second type family. Motion is intentional and restrained, using `framer-motion` for the handful of signature interactions: the checkbox "pop", task enter/exit in the list, sidebar entrance + quote cross-fade, and modal open/close transitions — everything else is quiet CSS transitions. Not a free-for-all: new animations should map to one of these established moments, not be added ad hoc. Respect `prefers-reduced-motion`. When making UI/visual decisions, use the `frontend-design` skill.
 
 ## Spec workflow
 

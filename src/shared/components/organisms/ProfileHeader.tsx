@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Pencil } from "lucide-react";
 import { Text } from "../atoms/Text";
 import { IconButton } from "../atoms/IconButton";
@@ -23,23 +24,40 @@ const todayLabel = new Intl.DateTimeFormat("en-US", {
 export function ProfileHeader({ name, onboarded, bucket, onSaveName, onSkip }: ProfileHeaderProps) {
   const [nameModalOpen, setNameModalOpen] = useState(() => !onboarded);
   const [quote, setQuote] = useState("");
+  const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
     fetchQuoteOfTheDay(bucket).then(setQuote);
   }, [bucket]);
 
   return (
-    <div className="flex flex-col gap-1">
-      <div className="flex items-center gap-2">
-        <Text variant="title">{name ? `Hi, ${name}` : "Hi there"}</Text>
-        <IconButton aria-label="Edit name" onClick={() => setNameModalOpen(true)}>
-          <Pencil className="h-4 w-4" strokeWidth={1.5} />
-        </IconButton>
+    <motion.div
+      className="flex flex-col gap-3"
+      initial={shouldReduceMotion ? false : { opacity: 0, y: -8 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: shouldReduceMotion ? 0 : 0.4, ease: "easeOut" }}
+    >
+      <div className="flex flex-col gap-2">
+        <div className="flex items-center gap-3">
+          <Text variant="title">{name ? `Hi, ${name}` : "Hi there"}</Text>
+          <IconButton aria-label="Edit name" onClick={() => setNameModalOpen(true)}>
+            <Pencil className="h-4 w-4" strokeWidth={1.5} />
+          </IconButton>
+        </div>
+        <p className="text-base text-neutral-400 lg:text-lg">{todayLabel}</p>
       </div>
-      <Text variant="caption">{todayLabel}</Text>
-      <Text variant="caption" className="italic">
-        {quote}
-      </Text>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={quote}
+          initial={shouldReduceMotion ? false : { opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={shouldReduceMotion ? undefined : { opacity: 0 }}
+          transition={{ duration: shouldReduceMotion ? 0 : 0.3, ease: "easeOut" }}
+          className="border-l-2 border-neutral-200 py-1 pl-4"
+        >
+          <p className="text-lg italic text-neutral-500 lg:text-xl">{quote}</p>
+        </motion.div>
+      </AnimatePresence>
 
       <NameModal
         open={nameModalOpen}
@@ -53,6 +71,6 @@ export function ProfileHeader({ name, onboarded, bucket, onSaveName, onSkip }: P
           setNameModalOpen(false);
         }}
       />
-    </div>
+    </motion.div>
   );
 }

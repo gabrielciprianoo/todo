@@ -24,7 +24,7 @@ export function AddTaskForm({ onAdd }: AddTaskFormProps) {
         value={text}
         onChange={(e) => setText(e.target.value)}
         placeholder="Add a task…"
-        className="flex-1 rounded-full border border-neutral-200 px-4 py-2.5 text-sm text-black outline-none transition-colors duration-200 placeholder:text-neutral-300 focus:border-black"
+        className="flex-1 rounded-full border border-neutral-200 px-4 py-3 text-sm text-black outline-none transition-colors duration-200 placeholder:text-neutral-300 focus:border-black"
       />
       <Button type="submit" disabled={!trimmed}>
         Add
