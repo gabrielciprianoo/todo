@@ -1,3 +1,4 @@
+import { X } from "lucide-react";
 import { Checkbox } from "../atoms/Checkbox";
 import { IconButton } from "../atoms/IconButton";
 import type { Task } from "../../../features/tasks/types";
@@ -24,9 +25,7 @@ export function TaskItem({ task, onToggle, onDelete }: TaskItemProps) {
         {task.text}
       </span>
       <IconButton aria-label={`Delete "${task.text}"`} onClick={() => onDelete(task.id)}>
-        <svg viewBox="0 0 16 16" className="h-4 w-4 fill-none stroke-current stroke-[1.5]">
-          <path d="M4 4l8 8M12 4l-8 8" strokeLinecap="round" />
-        </svg>
+        <X className="h-4 w-4" strokeWidth={1.5} />
       </IconButton>
     </li>
   );
