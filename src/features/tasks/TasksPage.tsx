@@ -1,23 +1,35 @@
 import { useState } from "react";
 import { useTasks } from "./useTasks";
+import { useProfile } from "../profile/useProfile";
+import type { ProgressBucket } from "../profile/types";
 import { ProgressBar } from "../../shared/components/molecules/ProgressBar";
 import { ConfirmModal } from "../../shared/components/molecules/ConfirmModal";
+import { ProfileHeader } from "../../shared/components/organisms/ProfileHeader";
 import { TaskList } from "../../shared/components/organisms/TaskList";
 import { AddTaskForm } from "../../shared/components/organisms/AddTaskForm";
 import { Button } from "../../shared/components/atoms/Button";
-import { Text } from "../../shared/components/atoms/Text";
 
 export function TasksPage() {
   const { tasks, addTask, toggleTask, deleteTask, editTask, resetAll } = useTasks();
+  const { name, onboarded, setName, skipOnboarding } = useProfile();
   const [deletingTaskId, setDeletingTaskId] = useState<string | null>(null);
   const [resetConfirmOpen, setResetConfirmOpen] = useState(false);
 
   const completed = tasks.filter((task) => task.completed).length;
   const deletingTask = tasks.find((task) => task.id === deletingTaskId);
 
+  const bucket: ProgressBucket =
+    completed === 0 ? "empty" : completed === tasks.length ? "complete" : "in-progress";
+
   return (
     <div className="mx-auto flex min-h-screen w-full max-w-md flex-col gap-6 px-6 py-16">
-      <Text variant="title">Today</Text>
+      <ProfileHeader
+        name={name}
+        onboarded={onboarded}
+        bucket={bucket}
+        onSaveName={setName}
+        onSkip={skipOnboarding}
+      />
 
       <ProgressBar completed={completed} total={tasks.length} />
 
