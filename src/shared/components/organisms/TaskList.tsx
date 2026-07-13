@@ -1,3 +1,4 @@
+import { AnimatePresence } from "framer-motion";
 import { TaskItem } from "../molecules/TaskItem";
 import { Text } from "../atoms/Text";
 import type { Task } from "../../../features/tasks/types";
@@ -16,15 +17,17 @@ export function TaskList({ tasks, onToggle, onRequestDelete, onEdit }: TaskListP
 
   return (
     <ul>
-      {tasks.map((task) => (
-        <TaskItem
-          key={task.id}
-          task={task}
-          onToggle={onToggle}
-          onDelete={onRequestDelete}
-          onEdit={onEdit}
-        />
-      ))}
+      <AnimatePresence initial={false}>
+        {tasks.map((task) => (
+          <TaskItem
+            key={task.id}
+            task={task}
+            onToggle={onToggle}
+            onDelete={onRequestDelete}
+            onEdit={onEdit}
+          />
+        ))}
+      </AnimatePresence>
     </ul>
   );
 }

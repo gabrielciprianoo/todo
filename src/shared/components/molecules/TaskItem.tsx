@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import { Pencil, X } from "lucide-react";
 import { Checkbox } from "../atoms/Checkbox";
 import { IconButton } from "../atoms/IconButton";
@@ -15,6 +16,7 @@ export function TaskItem({ task, onToggle, onDelete, onEdit }: TaskItemProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [draft, setDraft] = useState(task.text);
   const inputRef = useRef<HTMLInputElement>(null);
+  const shouldReduceMotion = useReducedMotion();
 
   const startEditing = () => {
     setDraft(task.text);
@@ -35,7 +37,14 @@ export function TaskItem({ task, onToggle, onDelete, onEdit }: TaskItemProps) {
   };
 
   return (
-    <li className="flex animate-task-in items-center gap-3 border-b border-neutral-100 py-3 last:border-b-0">
+    <motion.li
+      layout={!shouldReduceMotion}
+      initial={shouldReduceMotion ? false : { opacity: 0, height: 0 }}
+      animate={{ opacity: 1, height: "auto" }}
+      exit={shouldReduceMotion ? undefined : { opacity: 0, height: 0 }}
+      transition={{ duration: shouldReduceMotion ? 0 : 0.22, ease: "easeOut" }}
+      className="flex items-center gap-3 overflow-hidden border-b border-neutral-100 py-3 last:border-b-0"
+    >
       <Checkbox
         checked={task.completed}
         onChange={() => onToggle(task.id)}
@@ -72,6 +81,6 @@ export function TaskItem({ task, onToggle, onDelete, onEdit }: TaskItemProps) {
       <IconButton aria-label={`Delete "${task.text}"`} onClick={() => onDelete(task.id)}>
         <X className="h-4 w-4" strokeWidth={1.5} />
       </IconButton>
-    </li>
+    </motion.li>
   );
 }
