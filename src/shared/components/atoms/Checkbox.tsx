@@ -17,7 +17,7 @@ export function Checkbox({ checked, onChange, ...props }: CheckboxProps) {
       {...props}
     >
       {checked && (
-        <svg viewBox="0 0 12 12" className="h-3 w-3 fill-none stroke-white stroke-2">
+        <svg viewBox="0 0 12 12" className="h-3 w-3 animate-pop fill-none stroke-white stroke-2">
           <path d="M2 6l2.5 2.5L10 3" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       )}

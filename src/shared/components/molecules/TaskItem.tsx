@@ -10,7 +10,7 @@ type TaskItemProps = {
 
 export function TaskItem({ task, onToggle, onDelete }: TaskItemProps) {
   return (
-    <li className="flex items-center gap-3 border-b border-neutral-100 py-3 last:border-b-0">
+    <li className="flex animate-task-in items-center gap-3 border-b border-neutral-100 py-3 last:border-b-0">
       <Checkbox
         checked={task.completed}
         onChange={() => onToggle(task.id)}

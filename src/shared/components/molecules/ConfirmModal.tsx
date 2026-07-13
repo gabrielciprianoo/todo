@@ -22,11 +22,11 @@ export function ConfirmModal({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm animate-fade-in"
       onClick={onCancel}
     >
       <div
-        className="mx-4 w-full max-w-sm rounded-2xl bg-white p-6 shadow-xl"
+        className="mx-4 w-full max-w-sm rounded-2xl bg-white p-6 shadow-xl animate-scale-in"
         onClick={(e) => e.stopPropagation()}
       >
         <Text variant="body" className="font-semibold">
