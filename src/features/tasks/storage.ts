@@ -14,9 +14,17 @@ export function loadTasks(): Task[] {
 }
 
 export function saveTasks(tasks: Task[]): void {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+  } catch {
+    // localStorage unavailable (private mode/quota) — keep running in memory only
+  }
 }
 
 export function clearTasks(): void {
-  localStorage.removeItem(STORAGE_KEY);
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+  } catch {
+    // localStorage unavailable — nothing persisted to clear
+  }
 }
