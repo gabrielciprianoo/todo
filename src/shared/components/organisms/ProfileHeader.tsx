@@ -32,18 +32,20 @@ export function ProfileHeader({ name, onboarded, bucket, onSaveName, onSkip }: P
 
   return (
     <motion.div
-      className="flex flex-col gap-1"
+      className="flex flex-col gap-3"
       initial={shouldReduceMotion ? false : { opacity: 0, y: -8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: shouldReduceMotion ? 0 : 0.4, ease: "easeOut" }}
     >
-      <div className="flex items-center gap-2">
-        <Text variant="title">{name ? `Hi, ${name}` : "Hi there"}</Text>
-        <IconButton aria-label="Edit name" onClick={() => setNameModalOpen(true)}>
-          <Pencil className="h-4 w-4" strokeWidth={1.5} />
-        </IconButton>
+      <div className="flex flex-col gap-1">
+        <div className="flex items-center gap-2">
+          <Text variant="title">{name ? `Hi, ${name}` : "Hi there"}</Text>
+          <IconButton aria-label="Edit name" onClick={() => setNameModalOpen(true)}>
+            <Pencil className="h-4 w-4" strokeWidth={1.5} />
+          </IconButton>
+        </div>
+        <Text variant="caption">{todayLabel}</Text>
       </div>
-      <Text variant="caption">{todayLabel}</Text>
       <AnimatePresence mode="wait">
         <motion.div
           key={quote}
@@ -51,6 +53,7 @@ export function ProfileHeader({ name, onboarded, bucket, onSaveName, onSkip }: P
           animate={{ opacity: 1 }}
           exit={shouldReduceMotion ? undefined : { opacity: 0 }}
           transition={{ duration: shouldReduceMotion ? 0 : 0.3, ease: "easeOut" }}
+          className="border-l-2 border-neutral-200 pl-3"
         >
           <Text variant="caption" className="italic">
             {quote}

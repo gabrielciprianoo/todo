@@ -43,7 +43,7 @@ export function TaskItem({ task, onToggle, onDelete, onEdit }: TaskItemProps) {
       animate={{ opacity: 1, height: "auto" }}
       exit={shouldReduceMotion ? undefined : { opacity: 0, height: 0 }}
       transition={{ duration: shouldReduceMotion ? 0 : 0.22, ease: "easeOut" }}
-      className="flex items-center gap-3 overflow-hidden border-b border-neutral-100 py-3 last:border-b-0"
+      className="flex items-center gap-3 overflow-hidden border-b border-neutral-100 px-5 py-3.5 last:border-b-0"
     >
       <Checkbox
         checked={task.completed}

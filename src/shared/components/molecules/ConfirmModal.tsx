@@ -33,7 +33,7 @@ export function ConfirmModal({
           onClick={onCancel}
         >
           <motion.div
-            className="mx-4 w-full max-w-sm rounded-2xl bg-white p-6 shadow-xl"
+            className="mx-4 w-full max-w-sm rounded-3xl bg-white p-7 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)]"
             initial={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0.95 }}

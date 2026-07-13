@@ -1,3 +1,5 @@
+import { Text } from "../atoms/Text";
+
 type ProgressBarProps = {
   completed: number;
   total: number;
@@ -14,9 +16,9 @@ export function ProgressBar({ completed, total }: ProgressBarProps) {
           style={{ width: `${percent}%` }}
         />
       </div>
-      <div className="mt-2 text-xs text-neutral-400">
+      <Text variant="caption" className="mt-2">
         {completed}/{total} completed
-      </div>
+      </Text>
     </div>
   );
 }
