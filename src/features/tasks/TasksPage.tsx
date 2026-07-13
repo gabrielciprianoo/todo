@@ -22,33 +22,37 @@ export function TasksPage() {
     completed === 0 ? "empty" : completed === tasks.length ? "complete" : "in-progress";
 
   return (
-    <div className="mx-auto flex min-h-screen w-full max-w-md flex-col gap-6 px-6 py-16">
-      <ProfileHeader
-        name={name}
-        onboarded={onboarded}
-        bucket={bucket}
-        onSaveName={setName}
-        onSkip={skipOnboarding}
-      />
+    <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-6 py-16 lg:grid lg:grid-cols-[3fr_7fr] lg:items-start lg:gap-16">
+      <aside className="flex flex-col gap-6 lg:sticky lg:top-16">
+        <ProfileHeader
+          name={name}
+          onboarded={onboarded}
+          bucket={bucket}
+          onSaveName={setName}
+          onSkip={skipOnboarding}
+        />
 
-      <ProgressBar completed={completed} total={tasks.length} />
+        <ProgressBar completed={completed} total={tasks.length} />
+      </aside>
 
-      <AddTaskForm onAdd={addTask} />
+      <main className="flex min-h-screen flex-col gap-6">
+        <AddTaskForm onAdd={addTask} />
 
-      <TaskList
-        tasks={tasks}
-        onToggle={toggleTask}
-        onRequestDelete={setDeletingTaskId}
-        onEdit={editTask}
-      />
+        <TaskList
+          tasks={tasks}
+          onToggle={toggleTask}
+          onRequestDelete={setDeletingTaskId}
+          onEdit={editTask}
+        />
 
-      {tasks.length > 0 && (
-        <div className="mt-auto pt-8 text-right">
-          <Button variant="ghost" onClick={() => setResetConfirmOpen(true)}>
-            Reset all
-          </Button>
-        </div>
-      )}
+        {tasks.length > 0 && (
+          <div className="mt-auto pt-8 text-right">
+            <Button variant="ghost" onClick={() => setResetConfirmOpen(true)}>
+              Reset all
+            </Button>
+          </div>
+        )}
+      </main>
 
       <ConfirmModal
         open={deletingTask !== undefined}
