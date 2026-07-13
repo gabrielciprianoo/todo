@@ -1,6 +1,6 @@
 # SPEC 01 — Gamified personal todo list
 
-> **Status:** Draft
+> **Status:** Approved
 > **Depends on:** —
 > **Date:** 2026-07-13
 > **Objective:** Minimalist todo list where the user creates, completes, and deletes daily tasks, seeing progress on a progress bar, with an optional full reset.
