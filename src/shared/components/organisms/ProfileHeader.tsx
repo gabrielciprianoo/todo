@@ -15,8 +15,9 @@ type ProfileHeaderProps = {
 };
 
 const todayLabel = new Intl.DateTimeFormat("en-US", {
-  month: "long",
+  weekday: "short",
   day: "numeric",
+  month: "short",
 }).format(new Date());
 
 export function ProfileHeader({ name, onboarded, bucket, onSaveName, onSkip }: ProfileHeaderProps) {
@@ -35,7 +36,7 @@ export function ProfileHeader({ name, onboarded, bucket, onSaveName, onSkip }: P
           <Pencil className="h-4 w-4" strokeWidth={1.5} />
         </IconButton>
       </div>
-      <Text variant="caption">Today, {todayLabel}</Text>
+      <Text variant="caption">{todayLabel}</Text>
       <Text variant="caption" className="italic">
         {quote}
       </Text>
