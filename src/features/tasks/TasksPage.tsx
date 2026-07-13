@@ -8,7 +8,7 @@ import { Button } from "../../shared/components/atoms/Button";
 import { Text } from "../../shared/components/atoms/Text";
 
 export function TasksPage() {
-  const { tasks, addTask, toggleTask, deleteTask, resetAll } = useTasks();
+  const { tasks, addTask, toggleTask, deleteTask, editTask, resetAll } = useTasks();
   const [deletingTaskId, setDeletingTaskId] = useState<string | null>(null);
   const [resetConfirmOpen, setResetConfirmOpen] = useState(false);
 
@@ -23,7 +23,12 @@ export function TasksPage() {
 
       <AddTaskForm onAdd={addTask} />
 
-      <TaskList tasks={tasks} onToggle={toggleTask} onRequestDelete={setDeletingTaskId} />
+      <TaskList
+        tasks={tasks}
+        onToggle={toggleTask}
+        onRequestDelete={setDeletingTaskId}
+        onEdit={editTask}
+      />
 
       {tasks.length > 0 && (
         <div className="mt-auto pt-8 text-right">

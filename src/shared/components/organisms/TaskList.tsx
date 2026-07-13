@@ -6,9 +6,10 @@ type TaskListProps = {
   tasks: Task[];
   onToggle: (id: string) => void;
   onRequestDelete: (id: string) => void;
+  onEdit: (id: string, text: string) => void;
 };
 
-export function TaskList({ tasks, onToggle, onRequestDelete }: TaskListProps) {
+export function TaskList({ tasks, onToggle, onRequestDelete, onEdit }: TaskListProps) {
   if (tasks.length === 0) {
     return <Text variant="caption">No tasks yet. Add one to get started.</Text>;
   }
@@ -16,7 +17,13 @@ export function TaskList({ tasks, onToggle, onRequestDelete }: TaskListProps) {
   return (
     <ul>
       {tasks.map((task) => (
-        <TaskItem key={task.id} task={task} onToggle={onToggle} onDelete={onRequestDelete} />
+        <TaskItem
+          key={task.id}
+          task={task}
+          onToggle={onToggle}
+          onDelete={onRequestDelete}
+          onEdit={onEdit}
+        />
       ))}
     </ul>
   );
