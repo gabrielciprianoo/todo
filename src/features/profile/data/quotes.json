@@ -1,0 +1,48 @@
+{
+  "empty": [
+    "Every accomplishment starts with the decision to try.",
+    "The secret of getting ahead is getting started.",
+    "A journey of a thousand miles begins with a single step.",
+    "You don't have to be great to start, but you have to start to be great.",
+    "The best time to start was yesterday. The next best time is now.",
+    "Small steps every day lead to big changes.",
+    "Start where you are. Use what you have. Do what you can.",
+    "Nothing changes if nothing changes.",
+    "The hardest part is beginning. Once you begin, the rest follows.",
+    "One task at a time is how mountains get moved.",
+    "Today is a blank page — write something good on it.",
+    "Discipline is choosing between what you want now and what you want most.",
+    "Your future is created by what you do today, not tomorrow."
+  ],
+  "inProgress": [
+    "Progress, not perfection.",
+    "Keep going. Everything you need will come to you.",
+    "You're doing better than you think.",
+    "Half done is still ahead of not started.",
+    "Momentum builds with every task, no matter how small.",
+    "Success is the sum of small efforts repeated daily.",
+    "Don't stop now — you're closer than you were an hour ago.",
+    "Consistency beats intensity.",
+    "Keep the pace, the finish line is real.",
+    "Every checked box is proof you can finish this.",
+    "It always seems impossible until it's done.",
+    "The middle is where most people quit — don't be most people.",
+    "Slow progress is still progress.",
+    "You've already done the hard part: starting."
+  ],
+  "complete": [
+    "Well done! You showed up for yourself today.",
+    "Every task complete — that's a great day's work.",
+    "You did what you set out to do. That matters.",
+    "Finished. Take a moment to feel good about that.",
+    "That's a wrap — nice work today.",
+    "You closed the loop. Well earned rest.",
+    "All done. Tomorrow is a fresh page.",
+    "Today's list: conquered.",
+    "Nothing left but the satisfaction of a job well done.",
+    "You showed up and finished. That's the whole game.",
+    "Clean slate, full checklist — enjoy it.",
+    "Done is a beautiful word.",
+    "You kept your word to yourself today."
+  ]
+}

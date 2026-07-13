@@ -4,6 +4,7 @@ export type TasksAction =
   | { type: "ADD_TASK"; text: string }
   | { type: "TOGGLE_TASK"; id: string }
   | { type: "DELETE_TASK"; id: string }
+  | { type: "EDIT_TASK"; id: string; text: string }
   | { type: "RESET_ALL" };
 
 export function tasksReducer(state: Task[], action: TasksAction): Task[] {
@@ -25,6 +26,13 @@ export function tasksReducer(state: Task[], action: TasksAction): Task[] {
       );
     case "DELETE_TASK":
       return state.filter((task) => task.id !== action.id);
+    case "EDIT_TASK": {
+      const text = action.text.trim();
+      if (!text) return state;
+      return state.map((task) =>
+        task.id === action.id ? { ...task, text } : task
+      );
+    }
     case "RESET_ALL":
       return [];
     default:
