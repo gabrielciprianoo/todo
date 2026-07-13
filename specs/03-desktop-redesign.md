@@ -1,6 +1,6 @@
 # SPEC 03 — Apple-style desktop redesign: split layout & motion
 
-> **Status:** Approved
+> **Status:** Implemented
 > **Depends on:** SPEC 01, SPEC 02
 > **Date:** 2026-07-13
 > **Objective:** Redesign the app's visual layout and motion into an Apple-inspired, two-column desktop experience (sticky profile/progress sidebar + task list) that uses full display width on desktop and collapses to a single column on mobile, with a handful of new signature animations.
@@ -49,18 +49,18 @@ No new data structures. Purely visual/layout/motion — `Task`, `Profile`, `Prog
 
 ## Acceptance criteria
 
-- [ ] The app loads with no console errors.
-- [ ] At viewport widths ≥1024px, the layout shows two columns: sidebar (name/date/quote/progress bar) on the left, task list + add-task form + reset button on the right.
-- [ ] The sidebar stays pinned (sticky) in the viewport while the task list scrolls, on desktop widths.
-- [ ] At viewport widths <1024px, the layout stacks into a single column in this order: name/date/quote/progress bar, then add-task form, then task list, then reset button.
-- [ ] On an ultra-wide viewport (≥1728px), the page content stays capped at a max-width and is centered, not stretched edge-to-edge.
-- [ ] Adding a new task animates it into the list (not an instant appearance).
-- [ ] Deleting a task (after confirming) animates it out of the list before it's removed.
-- [ ] The sidebar's greeting/quote block animates in on initial page load.
-- [ ] Changing progress bucket (e.g. completing the last task) cross-fades the quote text rather than swapping it instantly.
-- [ ] Opening/closing `ConfirmModal` and `NameModal` shows a scale+fade transition rather than an instant appear/disappear.
-- [ ] All existing SPEC 01 and SPEC 02 acceptance criteria still pass (add/toggle/delete/reset tasks, onboarding, name edit, inline task edit, persistence).
-- [ ] With `prefers-reduced-motion: reduce` enabled, animations are removed or reduced to instant/near-instant transitions, consistent with the existing checkbox pop behavior.
+- [x] The app loads with no console errors.
+- [x] At viewport widths ≥1024px, the layout shows two columns: sidebar (name/date/quote/progress bar) on the left, task list + add-task form + reset button on the right.
+- [x] The sidebar stays pinned (sticky) in the viewport while the task list scrolls, on desktop widths.
+- [x] At viewport widths <1024px, the layout stacks into a single column in this order: name/date/quote/progress bar, then add-task form, then task list, then reset button.
+- [x] On an ultra-wide viewport (≥1728px), the page content stays capped at a max-width and is centered, not stretched edge-to-edge.
+- [x] Adding a new task animates it into the list (not an instant appearance).
+- [x] Deleting a task (after confirming) animates it out of the list before it's removed.
+- [x] The sidebar's greeting/quote block animates in on initial page load.
+- [x] Changing progress bucket (e.g. completing the last task) cross-fades the quote text rather than swapping it instantly.
+- [x] Opening/closing `ConfirmModal` and `NameModal` shows a scale+fade transition rather than an instant appear/disappear.
+- [x] All existing SPEC 01 and SPEC 02 acceptance criteria still pass (add/toggle/delete/reset tasks, onboarding, name edit, inline task edit, persistence).
+- [x] With `prefers-reduced-motion: reduce` enabled, animations are removed or reduced to instant/near-instant transitions, consistent with the existing checkbox pop behavior.
 
 ## Decisions
 
