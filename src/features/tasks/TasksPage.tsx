@@ -22,8 +22,8 @@ export function TasksPage() {
     completed === 0 ? "empty" : completed === tasks.length ? "complete" : "in-progress";
 
   return (
-    <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-6 py-16 lg:grid lg:grid-cols-[3fr_7fr] lg:items-start lg:gap-16">
-      <aside className="flex flex-col gap-8 lg:sticky lg:top-16">
+    <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-6 py-16 lg:grid lg:grid-cols-2 lg:items-start lg:gap-16">
+      <aside className="flex flex-col gap-8 lg:sticky lg:top-0 lg:min-h-[calc(100vh-8rem)] lg:justify-center">
         <ProfileHeader
           name={name}
           onboarded={onboarded}
@@ -35,7 +35,7 @@ export function TasksPage() {
         <ProgressBar completed={completed} total={tasks.length} />
       </aside>
 
-      <main className="flex min-h-screen flex-col gap-6">
+      <main className="flex min-h-[calc(100vh-8rem)] flex-col gap-6">
         <AddTaskForm onAdd={addTask} />
 
         <TaskList

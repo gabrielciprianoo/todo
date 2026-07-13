@@ -9,7 +9,7 @@
 
 **In:**
 
-- Two-column desktop layout (≥1024px, Tailwind `lg`): left sidebar (~30% width, proportional) holds `ProfileHeader` (name/date/quote) + `ProgressBar`, sticky while right column (task list, add-task form, reset button) scrolls independently.
+- Two-column desktop layout (≥1024px, Tailwind `lg`): left sidebar (~50% width, proportional, equal weight with the task column) holds `ProfileHeader` (name/date/quote, larger type scale) + `ProgressBar`, sticky while right column (task list, add-task form, reset button) scrolls independently.
 - Below `lg`: single column, stacked — sidebar content (name/date/quote/progress) first, then add-task form, task list, reset button — same order as today.
 - Overall page capped at a max-width (e.g. `max-w-6xl`/`7xl`), centered — no edge-to-edge stretch on ultra-wide monitors.
 - New signature animations (added to existing checkbox pop):
@@ -37,7 +37,7 @@ No new data structures. Purely visual/layout/motion — `Task`, `Profile`, `Prog
 
 1. Install dependency: `pnpm add framer-motion`.
 2. Update `CLAUDE.md`'s "Design language" section: replace the "one signature interaction" line with language covering the expanded set (checkbox pop, task enter/exit, sidebar entrance, modal transitions), still framed as intentional/minimal — not a free-for-all.
-3. Restructure `src/features/tasks/TasksPage.tsx` into a responsive two-column grid: a `<aside>` (sidebar: `ProfileHeader` + `ProgressBar`, `sticky top-*` on `lg:`, ~30% width) and a `<main>` (add-task form, task list, reset button, ~70% width). Below `lg`, both stack full-width in the current order (sidebar content, then main content).
+3. Restructure `src/features/tasks/TasksPage.tsx` into a responsive two-column grid: a `<aside>` (sidebar: `ProfileHeader` + `ProgressBar`, `sticky top-*` on `lg:`, ~50% width) and a `<main>` (add-task form, task list, reset button, ~50% width). Below `lg`, both stack full-width in the current order (sidebar content, then main content).
 4. Wrap the outer page container with a max-width cap (e.g. `max-w-6xl`/`7xl`), centered, replacing the current `max-w-md`.
 5. Add sidebar entrance animation in `ProfileHeader.tsx`: wrap in a `framer-motion` `motion.div` (fade+slide on mount); cross-fade the quote text on bucket change using `AnimatePresence` keyed by quote string.
 6. Add task enter/exit animation in `TaskList.tsx`: wrap the mapped list in `AnimatePresence`, each `TaskItem` as a `motion.li`/`motion.div` with initial/animate/exit variants (fade + height collapse).
@@ -68,7 +68,7 @@ No new data structures. Purely visual/layout/motion — `Task`, `Profile`, `Prog
 - **Yes:** two-column desktop layout, sidebar (profile/quote/progress) left, tasks right — chosen over a right-sidebar or non-split wide-centered layout.
 - **Yes:** `lg` (1024px) as the split breakpoint — standard Tailwind cutoff, avoids a custom value.
 - **Yes:** sidebar is sticky on desktop — keeps progress visible while scrolling a long task list.
-- **Yes:** sidebar width is proportional (~30%) rather than a fixed pixel column — scales with the page's max-width container instead of leaving a disproportionate gap on very wide screens.
+- **Yes:** sidebar width is proportional (~50%, equal weight with the task column) rather than a fixed pixel column or the originally-planned ~30% — revised during `/spec-impl` step 10 review: user found the initial ~30% column too cramped for the profile/quote/progress block and wanted an Apple-style large info panel with bigger type, not a narrow strip.
 - **Yes:** page content capped at a max-width on desktop, centered — avoids an absurdly long task-list line length on large monitors; matches typical Apple-app conventions of not going edge-to-edge on ultra-wide displays.
 - **Yes:** mobile (<1024px) stacking order matches today's top-to-bottom order (profile/quote/progress, then actions/list) — no reflow surprises relative to the current app.
 - **Yes:** add-task input and Reset all button stay in the main/task column, not moved into the sidebar — sidebar is read-only info + progress, main column stays the action surface.

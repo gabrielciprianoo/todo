@@ -37,14 +37,14 @@ export function ProfileHeader({ name, onboarded, bucket, onSaveName, onSkip }: P
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: shouldReduceMotion ? 0 : 0.4, ease: "easeOut" }}
     >
-      <div className="flex flex-col gap-1">
-        <div className="flex items-center gap-2">
+      <div className="flex flex-col gap-2">
+        <div className="flex items-center gap-3">
           <Text variant="title">{name ? `Hi, ${name}` : "Hi there"}</Text>
           <IconButton aria-label="Edit name" onClick={() => setNameModalOpen(true)}>
             <Pencil className="h-4 w-4" strokeWidth={1.5} />
           </IconButton>
         </div>
-        <Text variant="caption">{todayLabel}</Text>
+        <p className="text-base text-neutral-400 lg:text-lg">{todayLabel}</p>
       </div>
       <AnimatePresence mode="wait">
         <motion.div
@@ -53,11 +53,9 @@ export function ProfileHeader({ name, onboarded, bucket, onSaveName, onSkip }: P
           animate={{ opacity: 1 }}
           exit={shouldReduceMotion ? undefined : { opacity: 0 }}
           transition={{ duration: shouldReduceMotion ? 0 : 0.3, ease: "easeOut" }}
-          className="border-l-2 border-neutral-200 pl-3"
+          className="border-l-2 border-neutral-200 py-1 pl-4"
         >
-          <Text variant="caption" className="italic">
-            {quote}
-          </Text>
+          <p className="text-lg italic text-neutral-500 lg:text-xl">{quote}</p>
         </motion.div>
       </AnimatePresence>
 

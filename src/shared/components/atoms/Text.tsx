@@ -7,7 +7,7 @@ type TextProps = {
 };
 
 const variants = {
-  title: "text-3xl font-semibold tracking-tight text-black lg:text-4xl",
+  title: "text-3xl font-semibold tracking-tight text-black lg:text-6xl",
   body: "text-base text-black",
   caption: "text-sm text-neutral-400",
 };
