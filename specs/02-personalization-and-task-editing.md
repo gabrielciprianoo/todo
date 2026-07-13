@@ -1,6 +1,6 @@
 # SPEC 02 — User personalization: name, date, motivational phrase
 
-> **Status:** Approved
+> **Status:** Implemented
 > **Depends on:** SPEC 01
 > **Date:** 2026-07-13
 > **Objective:** Personalize the app with the user's name (asked once, editable later), today's date, and a motivational phrase that reflects daily progress, sourced from a local quote list, plus inline task editing.
@@ -110,21 +110,21 @@ export type TasksAction =
 
 ## Acceptance criteria
 
-- [ ] On first visit (no saved profile), the name onboarding modal appears automatically.
-- [ ] Entering a name and saving persists it; reloading the page shows the same name.
-- [ ] Skipping onboarding dismisses the modal, shows a generic greeting ("Hi there"), and does not re-prompt on reload.
-- [ ] Clicking the pencil icon next to the name reopens the name modal to edit it; saving updates the displayed name and persists it.
-- [ ] Today's date displays in "Today, [Month] [Day]" format and matches the actual current date.
-- [ ] A motivational phrase is shown, sourced from the local 40-quote list, matching the current progress bucket (empty/in-progress/complete).
-- [ ] Completing the last remaining task live-updates the phrase to one from the "complete" bucket without a page reload.
-- [ ] Uncompleting a task from 100% live-updates the phrase back to an "in-progress" bucket quote.
-- [ ] A corrupted/invalid profile object in localStorage does not crash the app — falls back to the onboarding flow.
-- [ ] Clicking the pencil icon on a task turns its text into an editable input.
-- [ ] Pressing Enter or clicking away (blur) while editing a task saves the new text.
-- [ ] Pressing Escape while editing a task cancels the edit, restoring the original text.
-- [ ] Attempting to save an empty task edit is blocked — the task keeps its original text.
-- [ ] The delete "x" icon on a task renders as the lucide `X` icon and still opens the delete confirmation modal.
-- [ ] The app loads with no console errors.
+- [x] On first visit (no saved profile), the name onboarding modal appears automatically.
+- [x] Entering a name and saving persists it; reloading the page shows the same name.
+- [x] Skipping onboarding dismisses the modal, shows a generic greeting ("Hi there"), and does not re-prompt on reload.
+- [x] Clicking the pencil icon next to the name reopens the name modal to edit it; saving updates the displayed name and persists it.
+- [x] Today's date displays in "Today, [Month] [Day]" format and matches the actual current date.
+- [x] A motivational phrase is shown, sourced from the local 40-quote list, matching the current progress bucket (empty/in-progress/complete).
+- [x] Completing the last remaining task live-updates the phrase to one from the "complete" bucket without a page reload.
+- [x] Uncompleting a task from 100% live-updates the phrase back to an "in-progress" bucket quote.
+- [x] A corrupted/invalid profile object in localStorage does not crash the app — falls back to the onboarding flow.
+- [x] Clicking the pencil icon on a task turns its text into an editable input.
+- [x] Pressing Enter or clicking away (blur) while editing a task saves the new text.
+- [x] Pressing Escape while editing a task cancels the edit, restoring the original text.
+- [x] Attempting to save an empty task edit is blocked — the task keeps its original text.
+- [x] The delete "x" icon on a task renders as the lucide `X` icon and still opens the delete confirmation modal.
+- [x] The app loads with no console errors.
 
 ## Decisions
 
